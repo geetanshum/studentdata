@@ -1,0 +1,37 @@
+<body>
+    <div class="text-center mt-5 font container">
+    <div class="alert alert-info font shadow-lg">upfobt</div>
+    <div class="row"></div>
+         <div class ="col-sm-5 p-5"></div>
+    <div class=""alert-info font shadow-sm>Add Student Data</div>
+           <form method="POST" class="shadow-sm py-3">{% csrf_token %}
+                {{form.as_p}}<br>
+        <button class="btn btn-info">Submit</button>
+    </form>
+    </div>
+
+    <div class="col-sm-5 p-5">
+        <div class="alert alert-info font shadow-sm">Update/Delete Student Data</div>
+    <table class="table table-sm table-info shadow-lg table-hover">
+    <thead>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Gender</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </thead>
+    {% for student in stu %}
+    <tr class="font1">
+        <td>{{student.id}}</td>
+        <td>{{student.name}}</td>
+        <td>{{student.email}}</td>
+        <td>{{student.gender}}</td>
+        <td><a href="/student/edit/{{student.id}}/" class="btn btn-sm text-white" style="background-color: green;">Edit</a></td>
+        <td><a href="/student/delete/{{student.id}}/" class="btn btn-sm text-white" style="background-color: red;">Delete</a></td>
+    </tr>
+    {% endfor %}
+
+    </table>
+    </div>    
+</body>
